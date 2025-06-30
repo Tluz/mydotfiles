@@ -8,7 +8,7 @@ sudo cp -a ../config/qutebrowser ~/.config/
 
 #wallpaper
 #yay -S feh
-sudo cp -a ../wallpapers/background.png ~/wallpapers/
+sudo cp -a ../wallpapers/background.png ~/Imagens/
 feh --bg-scale ~/wallpapers/background.png
 
 #starship
