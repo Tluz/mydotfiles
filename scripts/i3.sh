@@ -13,6 +13,7 @@ feh --bg-scale ~/Imagens/background.png
 
 #starship
 #yay -S starship
+sudo cp -a ../config/config-schema.json ~/.config/
 sudo cp -a ../config/starship.toml ~/.config/
 
 #rofi
