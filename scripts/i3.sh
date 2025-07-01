@@ -27,4 +27,5 @@ sudo cp -a ../config/i3 ~/.config/
 sudo cp -a ../config/xfce4/current-color.theme /usr/share/xfce4/terminal/colorschemes/
 
 #polybar
+#sudo -S pacman tff-firacode-nerd
 sudo cp -a ../config/polybar ~/.config/
