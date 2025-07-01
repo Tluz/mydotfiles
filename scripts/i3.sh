@@ -21,3 +21,9 @@ sudo cp -a ../config/rofi ~/.config/
 #i3
 sudo cp -a ../config/i3 ~/.config/
 
+#xfce
+#sudo pacman -S fastfetch
+sudo cp -a ../config/xfce4/current-color.theme /usr/share/xfce4/terminal/colorschemes/
+
+#polybar
+sudo cp -a ../config/polybar ~/.config/
