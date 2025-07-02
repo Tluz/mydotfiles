@@ -1,16 +1,49 @@
-#YAY
-#sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+_isInstalled() {
+  package="$1"
+  check="$(sudo pacman -Q | grep "${package}")"
+  if [ -n "${check}" ]; then
+    echo 0
+    return
+  fi
+  echo 1
+  return
+}
 
-#pywall
-#yay -i pywall-git
-wal -i ~/projects/dotfiles/wallpapers/pywallpaper.jpeg
+_install() {
+  package="$1"
+  packageType=$2
 
-#nvim
-#~/dotfiles/InstallScripts/fullinstall.sh
+  if [[ $(_isInstalled "${package}") == 0 ]]; then
+    echo "${package} is already installed."
+    return
+  fi
+
+  if [[packageType == 1 ]]; then
+    echo "Installing ${package} via Yay"
+    yay -S ${package}
+    return
+  fi
+
+  echo "Installing ${package} via pacman"
+  sudo pacman -S "${package}"
+}
+
+#neovim
+_install "neovim" 0
+sudo cp -a ../config/nvim ~/.config/
+
+#qutebrowser
+_install "qutebrowser" 0
+sudo cp -a ../config/qutebrowser ~/.config/
+
+#starship
+_install "starship" 0
+sudo cp -a ../config/config-schema.json ~/.config/
+sudo cp -a ../config/starship.toml ~/.config/
 
 #wofi
-#yay -S wofi
-#sudo cp -a ~/projects/dotfiles/.config/wofi ~/.config/
+_install "wofi" 1
+sudo cp -a ../config/wofi ~/.config/
 
 #waybar
 #yay -S waybar hyprpicker otf-codenewroman-nerd
@@ -25,40 +58,17 @@ wal -i ~/projects/dotfiles/wallpapers/pywallpaper.jpeg
 
 #wallpaper
 #yay -S swww fd
-sudo cp -a ~/projects/dotfiles/.config/hypr/wallpaper.sh ~/.config/hypr/wallpaper.sh
-sudo cp -a ~/projects/dotfiles/.config/wofi/config ~/.config/wofi/
-sudo cp -a ~/projects/dotfiles/.config/wofi/style.css ~/.config/wofi/
+#sudo cp -a ~/projects/dotfiles/.config/hypr/wallpaper.sh ~/.config/hypr/wallpaper.sh
+#sudo cp -a ~/projects/dotfiles/.config/wofi/config ~/.config/wofi/
+#sudo cp -a ~/projects/dotfiles/.config/wofi/style.css ~/.config/wofi/
 
 #hyprpaper
 #sudo pacman -S hyprpaper
 #sudo cp -a ~/projects/dotfiles/.config/hypr/hyprpaper.conf ~/.config/hypr/
 
-#wlogout
-#yay -S wlogout
-#sudo cp -a ~/projects/dotfiles/.config/wlogout ~/.config/
-
-#starship
-#yay -S starship
-#sudo cp -a ~/projects/dotfiles/.config/starship.toml ~/.config/
-
 #explorer
 #sudo pacman -S thunar
 #yay -S nwg-look qogir-icon-theme materia-gtk-theme illogical-impulse-bibata-modern-classic-bin adwaita-colors-icon-theme
 
-#qutebrowser
-yay -S qutebrowser-git
-cp ~/projects/dotfiles/.config/qutebrowser ~/.config/
-
 #hyprland
 #sudo cp -a ~/projects/dotfiles/.config/hypr/hyprland.conf ~/.config/hypr/
-
-#kitty
-#sudo cp -a ~/projects/dotfiles/.config/kitty ~/.config/
-
-#autologin
-#sudo cp -a ~/projects/dotfiles/etc/bash.bashrc /etc/
-#sudo cp -a ~/projects/dotfiles/etc/override.conf /etc/systemd/system/getty@tty1.service.d/
-
-#waypaper
-#sudo pacman -S waypaper
-#sudo cp -a ~/projects/dotfiles/.config/waypaper/ ~/.config/waypaper/
