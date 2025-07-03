@@ -66,7 +66,7 @@ _install "wireplumber" 0
 _install "playerctl" 0
 
 #power profile
-_install "power-profiles-daemon" 0
+_install "power-profiles-daemon" 1
 powerprofilesctl set balanced
 
 #neovim
@@ -109,7 +109,7 @@ sudo cp ../themes/catppuccin/background.png ~/wallpapers/current-theme.png
 #mako
 _install "mako" 0
 mkdir -p ~/.config/mako
-sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
+sudo cp ../themes/catppuccin/mako.ini ~/.config/mako/config
 
 #PrintScreen
 _install "hyprshot" 0
