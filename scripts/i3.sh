@@ -40,7 +40,7 @@ sudo cp -a ../config/qutebrowser ~/.config/
 
 #wallpaper
 #_install "feh" 0 #Already installed with EndeavourOS i3
-sudo cp -a ../wallpapers/background.png ~/Imagens/
+sudo cp -a ../themes/catppuccin/background.png ~/Imagens/
 feh --bg-scale ~/Imagens/background.png
 
 #starship

@@ -28,6 +28,36 @@ _install() {
   sudo pacman -S "${package}"
 }
 
+#hyprland base
+_install "hyrland" 0
+_install "polkit-kde-agent" 0
+_install "qt5-wayland" 0
+_install "qt6-wayland" 0
+_install "uwsm" 0
+_install "xdg-desktop-portal-hyprland" 0
+sudo cp -a ../themes/catppuccin/hyprland.conf ~/.config/hypr/modules/hyprland-theme.conf
+sudo cp -a ../config/hypr ~/.config/
+
+#bluetooth tui
+_install "bluez" 0
+_install "bluetui" 0
+
+#wifi tui
+_install "impala" 0
+
+#explorer tui
+_install "nnn" 0
+
+#power profile
+_install "power-profiles-daemon" 0
+if ls /sys/class/power_supply/BAT* &>/dev/null; then
+  # This computer runs on a battery
+  powerprofilesctl set balanced
+else
+  # This computer runs on power outlet
+  powerprofilesctl set performance
+fi
+
 #neovim
 _install "neovim" 0
 sudo cp -a ../config/nvim ~/.config/
@@ -42,36 +72,33 @@ sudo cp -a ../config/config-schema.json ~/.config/
 sudo cp -a ../config/starship.toml ~/.config/
 
 #wofi
-#_install "wofi" 1
-#sudo cp -a ../config/wofi ~/.config/
+_install "wofi" 0
+sudo cp -a ../config/wofi ~/.config/
+sudo cp ../themes/catppuccin/wofi.css ~/.config/wofi/style.css
 
 #waybar
-_install "waybar" 1
-#yay -S waybar hyprpicker otf-codenewroman-nerd
-#yay -S blueman bluez
-#systemctl enable bluetooth
+_install "ttf-firacode-nerd" 0
+_install "waybar" 0
 sudo cp -a ../config/waybar ~/.config/
 sudo cp ../themes/catppuccin/waybar.css ~/.config/waybar/theme.css
 
-#swaync
-#yay -S swaync gvfs
-#wal -i ~/projects/dotfiles/wallpapers/pywallpaper.jpg
-#sudo cp -a ~/projects/dotfiles/.config/swaync ~/.config/
-
 #wallpaper
-#yay -S swww fd
-#sudo cp -a ~/projects/dotfiles/.config/hypr/wallpaper.sh ~/.config/hypr/wallpaper.sh
-#sudo cp -a ~/projects/dotfiles/.config/wofi/config ~/.config/wofi/
-#sudo cp -a ~/projects/dotfiles/.config/wofi/style.css ~/.config/wofi/
+_install "swaybg" 0
+mkdir -p ~/wallpapers
+sudo cp ../themes/catppuccin/background.png ~/wallpapers/current-theme.png
 
-#hyprpaper
-#sudo pacman -S hyprpaper
-#sudo cp -a ~/projects/dotfiles/.config/hypr/hyprpaper.conf ~/.config/hypr/
+#mako
+_install "mako" 0
+mkdir -p ~/.config/mako
+sudo cp ../themes/catppuccin/mako.ini ~/.config/mako/config
 
-#explorer
-#sudo pacman -S thunar
-#yay -S nwg-look qogir-icon-theme materia-gtk-theme illogical-impulse-bibata-modern-classic-bin adwaita-colors-icon-theme
+#btop
+_install "btop" 0
+mkdir -p ~/.config/btop/themes
+sudo cp ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
 
-#hyprland
-sudo cp -a ../themes/catppuccin/hyprland.conf ~/.config/hypr/modules/hyprland-theme.conf
-sudo cp -a ../config/hypr ~/.config/
+#default bash 
+sudo cp -a ../etc/bash.bashrc /etc/
+
+# Login directly as user
+sudo cp -a ../etc/override.conf /etc/systemd/system/getty@tty1.service.d/
