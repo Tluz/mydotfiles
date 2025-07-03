@@ -58,6 +58,13 @@ _install "impala" 0
 #explorer tui
 _install "nnn" 0
 
+#brightness 
+_install "brightness" 0
+
+#sound
+_install "wpctl" 0
+_install "playerctl" 0
+
 #power profile
 _install "power-profiles-daemon" 0
 if ls /sys/class/power_supply/BAT* &>/dev/null; then
@@ -107,6 +114,14 @@ sudo cp ../themes/catppuccin/background.png ~/wallpapers/current-theme.png
 #mako
 _install "mako" 0
 sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
+
+#PrintScreen
+_install "hyprshot" 0
+_install "hyprpicker" 0
+
+#Clipboard
+_install "wl-clipboard" 0
+_install "clipse" 0
 
 #btop
 _install "btop" 0
