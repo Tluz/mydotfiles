@@ -119,10 +119,6 @@ sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
 _install "hyprshot" 0
 _install "hyprpicker" 0
 
-#Clipboard
-_install "wl-clipboard" 0
-_install "clipse" 0
-
 #btop
 _install "btop" 0
 sudo cp -a ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
