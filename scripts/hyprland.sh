@@ -115,9 +115,6 @@ sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
 _install "hyprshot" 0
 _install "hyprpicker" 0
 
-#Copy
-_install "wl-clipboard" 0
-
 #btop
 _install "btop" 0
 mkdir -p ~/.config/btop/themes
@@ -127,5 +124,5 @@ sudo cp -a ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
 sudo cp -a ../etc/bash.bashrc /etc/
 
 # Login directly as user
-mkdir -p /etc/systemd/system/getty@tty1.service.d/
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
 sudo cp -a ../etc/override.conf /etc/systemd/system/getty@tty1.service.d/
