@@ -60,11 +60,18 @@ fi
 
 #neovim
 _install "neovim" 0
+_install "fzf" 0
+_install "ripgrep" 0
+_install "fd" 0
 sudo cp -a ../config/nvim ~/.config/
 
 #qutebrowser
 _install "qutebrowser" 0
 sudo cp -a ../config/qutebrowser ~/.config/
+
+#foot
+_install "foot" 0
+sudo cp -a ../themes/catppuccin/foot.ini ~/.config/foot/
 
 #starship
 _install "starship" 0
@@ -89,13 +96,11 @@ sudo cp ../themes/catppuccin/background.png ~/wallpapers/current-theme.png
 
 #mako
 _install "mako" 0
-mkdir -p ~/.config/mako
-sudo cp ../themes/catppuccin/mako.ini ~/.config/mako/config
+sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
 
 #btop
 _install "btop" 0
-mkdir -p ~/.config/btop/themes
-sudo cp ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
+sudo cp -a ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
 
 #default bash 
 sudo cp -a ../etc/bash.bashrc /etc/
