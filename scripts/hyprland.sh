@@ -28,6 +28,16 @@ _install() {
   sudo pacman -S "${package}"
 }
 
+#Yay
+sudo pacman -S --needed --noconfirm base-devel
+if ! command -v yay &>/dev/null; then
+  git clone https://aur.archlinux.org/yay-bin.git
+  cd yay-bin
+  makepkg -si --noconfirm
+  cd ~
+  rm -rf yay-bin
+fi
+
 #hyprland base
 _install "hyrland" 0
 _install "polkit-kde-agent" 0
