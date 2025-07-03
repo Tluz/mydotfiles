@@ -39,7 +39,7 @@ if ! command -v yay &>/dev/null; then
 fi
 
 #hyprland base
-_install "hyrland" 0
+_install "hyprland" 0
 _install "polkit-kde-agent" 0
 _install "qt5-wayland" 0
 _install "qt6-wayland" 0
@@ -59,21 +59,15 @@ _install "impala" 0
 _install "nnn" 0
 
 #brightness 
-_install "brightness" 0
+_install "brightnessctl" 0
 
 #sound
-_install "wpctl" 0
+_install "wireplumber" 0
 _install "playerctl" 0
 
 #power profile
 _install "power-profiles-daemon" 0
-if ls /sys/class/power_supply/BAT* &>/dev/null; then
-  # This computer runs on a battery
-  powerprofilesctl set balanced
-else
-  # This computer runs on power outlet
-  powerprofilesctl set performance
-fi
+powerprofilesctl set balanced
 
 #neovim
 _install "neovim" 0
@@ -88,6 +82,7 @@ sudo cp -a ../config/qutebrowser ~/.config/
 
 #foot
 _install "foot" 0
+mkdir -p ~/.config/foot
 sudo cp -a ../themes/catppuccin/foot.ini ~/.config/foot/
 
 #starship
@@ -113,18 +108,24 @@ sudo cp ../themes/catppuccin/background.png ~/wallpapers/current-theme.png
 
 #mako
 _install "mako" 0
+mkdir -p ~/.config/mako
 sudo cp - a ../themes/catppuccin/mako.ini ~/.config/mako/config
 
 #PrintScreen
 _install "hyprshot" 0
 _install "hyprpicker" 0
 
+#Copy
+_install "wl-clipboard" 0
+
 #btop
 _install "btop" 0
+mkdir -p ~/.config/btop/themes
 sudo cp -a ../themes/catppuccin/btop.theme ~/.config/btop/themes/current.theme
 
 #default bash 
 sudo cp -a ../etc/bash.bashrc /etc/
 
 # Login directly as user
+mkdir -p /etc/systemd/system/getty@tty1.service.d/
 sudo cp -a ../etc/override.conf /etc/systemd/system/getty@tty1.service.d/
