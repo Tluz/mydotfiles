@@ -66,7 +66,8 @@ _install "wireplumber" 0
 _install "playerctl" 0
 
 #power profile
-_install "power-profiles-daemon" 1
+_install "power-profiles-daemon" 0
+_install "python-gobject" 0
 powerprofilesctl set balanced
 
 #neovim
