@@ -18,7 +18,7 @@ _install() {
     return
   fi
 
-  if [[packageType == 1 ]]; then
+  if [ ${packageType} == 1 ]; then
     echo "Installing ${package} via Yay"
     yay -S ${package}
     return
@@ -42,14 +42,16 @@ sudo cp -a ../config/config-schema.json ~/.config/
 sudo cp -a ../config/starship.toml ~/.config/
 
 #wofi
-_install "wofi" 1
-sudo cp -a ../config/wofi ~/.config/
+#_install "wofi" 1
+#sudo cp -a ../config/wofi ~/.config/
 
 #waybar
+_install "waybar" 1
 #yay -S waybar hyprpicker otf-codenewroman-nerd
 #yay -S blueman bluez
 #systemctl enable bluetooth
-#sudo cp -a ~/projects/dotfiles/.config/waybar ~/.config/
+sudo cp -a ../config/waybar ~/.config/
+sudo cp ../themes/catppuccin/waybar.css ~/.config/waybar/theme.css
 
 #swaync
 #yay -S swaync gvfs
@@ -71,4 +73,5 @@ sudo cp -a ../config/wofi ~/.config/
 #yay -S nwg-look qogir-icon-theme materia-gtk-theme illogical-impulse-bibata-modern-classic-bin adwaita-colors-icon-theme
 
 #hyprland
-#sudo cp -a ~/projects/dotfiles/.config/hypr/hyprland.conf ~/.config/hypr/
+sudo cp -a ../themes/catppuccin/hyprland.conf ~/.config/hypr/modules/hyprland-theme.conf
+sudo cp -a ../config/hypr ~/.config/
